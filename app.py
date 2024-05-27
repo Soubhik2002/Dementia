@@ -40,9 +40,25 @@ def predict(image):
 #     drive = GoogleDrive(gauth)
 #     return drive
 
+# def authenticate_drive():
+#     gauth = GoogleAuth()
+#     gauth.DEFAULT_SETTINGS['client_config_file'] = 'client_secrets.json'
+#     gauth.LocalWebserverAuth()
+#     drive = GoogleDrive(gauth)
+#     return drive
+
 def authenticate_drive():
     gauth = GoogleAuth()
-    gauth.DEFAULT_SETTINGS['client_config_file'] = 'client_secrets.json'
+    gauth.DEFAULT_SETTINGS['client_config'] = {
+        "client_id": st.secrets["client_id"],
+        "client_secret": st.secrets["client_secret"],
+        "redirect_uri": "https://localhost:8080/",
+        "save_credentials": True,
+        "save_credentials_backend": "file",
+        "save_credentials_file": "credentials.json",
+        "get_refresh_token": True,
+        "oauth_scope": ["https://www.googleapis.com/auth/drive"]
+    }
     gauth.LocalWebserverAuth()
     drive = GoogleDrive(gauth)
     return drive
