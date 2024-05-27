@@ -48,20 +48,30 @@ def authenticate_drive():
     return drive
 
 
+# def upload_to_drive(uploaded_file, filename, folder_id):
+#     drive = authenticate_drive()
+#     image_content = uploaded_file.getvalue()
+#     image_file = BytesIO(image_content)
+#     temp_path = "./temp.jpg"
+#     with open(temp_path, "wb") as f:
+#         f.write(image_content)
+    
+#     file = drive.CreateFile({'title': filename, 'parents': [{'id': folder_id}]})
+#     file.SetContentFile(temp_path)
+#     file.Upload()
+#     f.close()
+    
+#     return file['alternateLink']
+
 def upload_to_drive(uploaded_file, filename, folder_id):
     drive = authenticate_drive()
     image_content = uploaded_file.getvalue()
-    image_file = BytesIO(image_content)
-    temp_path = "./temp.jpg"
-    with open(temp_path, "wb") as f:
-        f.write(image_content)
     
     file = drive.CreateFile({'title': filename, 'parents': [{'id': folder_id}]})
-    file.SetContentFile(temp_path)
+    file.content = BytesIO(image_content)
     file.Upload()
-    f.close()
-    
     return file['alternateLink']
+
 
 
 def main():
