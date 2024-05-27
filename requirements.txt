@@ -9,3 +9,4 @@ tensorflow
 pandas
 numpy
 opencv-python
+pydrive
