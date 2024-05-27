@@ -50,8 +50,8 @@ def predict(image):
 def authenticate_drive():
     gauth = GoogleAuth()
     gauth.DEFAULT_SETTINGS['client_config'] = {
-        "client_id": st.secrets["client_id"],
-        "client_secret": st.secrets["client_secret"],
+        "client_id": "526817444604-nhi7ocfj79059muv0gh4ardr40f2ah8l.apps.googleusercontent.com",
+        "client_secret": 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,
         "redirect_uri": "https://localhost:8080/",
         "save_credentials": True,
         "save_credentials_backend": "file",
