@@ -1,1 +1,11 @@
-
+streamlit>=1.31.0
+st-gsheets-connection
+email_validator
+scikit-learn
+scikit-image
+matplotlib
+keras
+tensorflow
+pandas
+numpy
+opencv-python
